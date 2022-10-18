@@ -12,11 +12,25 @@ var elementByClass = document.body.getElementsByClassName("main"); // Encontrar 
 
 var paragraphs = document.body.getElementsByTagName("p");
 
-console.log("Colección de nodos ", paragraphs);
+// console.log("Colección de nodos ", paragraphs);
 
-console.log("Primer nodo: ", paragraphs[0]);
-console.log("Segundo nodo: ", paragraphs[1]);
+// console.log("Primer nodo: ", paragraphs[0]);
+// console.log("Segundo nodo: ", paragraphs[1]);
 
 document.body.insertBefore(paragraphs[1], paragraphs[0]);
 
 // Ejemplo de creación de nodos
+
+var h2 = document.createElement("h2");
+
+console.log(h2);
+
+var text = document.createTextNode("Hello world from code!");
+
+console.log(text);
+
+h2.appendChild(text);
+
+console.log(h2);
+
+// Ejemplo de atributos
