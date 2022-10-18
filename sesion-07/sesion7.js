@@ -23,14 +23,35 @@ document.body.insertBefore(paragraphs[1], paragraphs[0]);
 
 var h2 = document.createElement("h2");
 
-console.log(h2);
+// console.log(h2);
 
 var text = document.createTextNode("Hello world from code!");
 
-console.log(text);
+// console.log(text);
 
 h2.appendChild(text);
+
+document.body.appendChild(h2);
 
 console.log(h2);
 
 // Ejemplo de atributos
+
+var link = document.getElementById("link");
+
+link.href = "http://google.com";
+
+link.className = "highlight";
+
+link.style.backgroundColor = "black";
+
+//console.log("link: ", link);
+
+// Ejemplo innerHTML
+
+var elementDiv = document.createElement("div");
+
+elementDiv.innerHTML = `
+<p>Texto por aquí</p>`;
+
+document.body.appendChild(elementDiv);
