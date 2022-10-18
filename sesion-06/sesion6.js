@@ -37,7 +37,7 @@ function addColor(car) {
     return car;
 }
 
-// var sameCar = addColor(car);
+var sameCar = addColor(car);
 
 // console.log("Objeto car después de llamar a addColor", car)
 // console.log("Objeto sameCar", sameCar)
@@ -62,7 +62,7 @@ function addColorI(car) {
 
 // console.log("Objeto car antes de llamar a addColorI", car)
 
-// var sameCarI = addColorI(car);
+var sameCarI = addColorI(car);
 
 // console.log("Objeto car después de llamar a addColorI", car)
 // console.log("Objeto sameCarI", sameCarI)
@@ -182,4 +182,4 @@ function flatten(arrays) {
   var arrays = [[1, 2, 3], [4, 5], [6]];
   var array = flatten(arrays);
   
-  console.log(array); // [1, 2, 3, 4, 5, 6]
+  // console.log(array); // [1, 2, 3, 4, 5, 6]
