@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <meta charset="utf8" />
+    <title>Reto 2: Crear una tabla</title>
+    <style>
+        .miTabla thead {
+            background-color: black;
+        }
+        .miTabla thead th {
+            color: white;
+            text-transform: capitalize;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Mountains</h1>
+
+    <div id="mountains">
+
+    </div>
+    <script>
+      var data = [
+        {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+        {name: "Everest", height: 8848, place: "Nepal"},
+        {name: "Mount Fuji", height: 3776, place: "Japan"},
+        {name: "Vaalserberg", height: 323, place: "Netherlands"},
+        {name: "Denali", height: 6168, place: "United States"},
+        {name: "Popocatepetl", height: 5465, place: "Mexico"},
+        {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+      ];
+      // Code goes here
+
+      var table = document.createElement("table");
+      table.className = "miTabla"
+
+      var fields = Object.keys(data[0]);
+
+      var tHead = document.createElement("thead");
+      
+      var headRow = document.createElement("tr");
+
+      for(var i = 0; i < fields.length; i++) {
+        var headCell = document.createElement("th");
+        var textCell = document.createTextNode(fields[i]);
+        headCell.appendChild(textCell);
+        headRow.appendChild(headCell);
+      }
+      tHead.appendChild(headRow);
+      table.appendChild(tHead);
+
+      var tBody = document.createElement("tbody");
+      table.appendChild(tBody);
+
+      for(var i = 0; i < data.length; i++) {
+        var tRow = document.createElement("tr");
+        for (var j = 0; j < fields.length; j++) {
+            var tCell = document.createElement("td");
+            tCell.appendChild(document.createTextNode(data[i][fields[j]])); // data[i]["name"] data[i].name
+            tRow.appendChild(tCell);
+        }
+        tBody.appendChild(tRow);
+      }
+      
+      document
+        .getElementById("mountains")
+        .appendChild(table);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset=“utf8” />
+    <title>Reto 1: Reemplazar Imágenes</title>
+  </head>
+  <body>
+    <h1>Images</h1>
+
+    <img src=“https://picsum.photos/200/300” alt=“First Image”/>
+    <img src=“https://picsum.photos/200/300” alt=“Second Image”/>
+    <img src=“https://picsum.photos/200/300” alt=“Third Image”/>
+
+    <form id="form">
+        <input type="text" id="name" />
+        <input type="text" id="surname" />
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+      var images = document.body.getElementsByTagName("img");
+
+      for (var i = images.length - 1; i >= 0; i--) {
+        images[i].alt = `Mi texto ${i + 1}`;
+        var text = document.createTextNode(images[i].alt);
+        images[i].parentNode.replaceChild(text, images[i]);
+      }
+
+      var nameAlt = "";
+      var nameElementAlt = document.getElementById("name").addEventListener("input", function(event) {
+        nameAlt = event.target.value;
+        console.log("name: ", nameAlt)
+      });
+
+      var form = document.getElementById("form");
+      form.addEventListener("submit", triggeredAfterSubmit)
+
+      function triggeredAfterSubmit(event) {
+         event.preventDefault();
+         console.log("Submit")
+          var nameElement = document.getElementById("name").value;
+          var surnameElement = document.getElementById("surname").value;
+          console.log("name", nameElement);
+          console.log("surname", surnameElement);
+      }
+
+      // Ejemplo con map // se debe agregar con appendChild
+      //   var imagesAfterMap = Array.from(images).map(function(image) {
+      //     return image;
+      //   })
+    </script>
+  </body>
+</html>
