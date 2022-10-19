@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Sesion 08</title>
+</head>
+<style>
+    form{
+        border: red solid;
+        padding: 5px;
+    }
+
+    div{
+        border: blue solid;
+    }
+</style>
+<body>
+    
+</body>
+<script>
+    //Sesion Dudas
+
+    // Hacerlo sin parametro extra
+    function createNode(type, content, isString = true){
+        var nuevoNodo = document.createElement(type);
+        var contenidoNodo;
+        if (isString) {
+            contenidoNodo = document.createTextNode(content);
+        }else{
+            contenidoNodo = content;
+        }
+        nuevoNodo.appendChild(contenidoNodo)
+        return nuevoNodo;
+    }
+
+    function addNode(nuevoNodo, lugar="body"){
+        const parentNode = document.querySelector(lugar);
+        parentNode.appendChild(nuevoNodo);
+    } 
+
+    // addNode(createNode("div",createNode("p","Hola mundo"),false),"#contenido");
+
+    addNode(createNode("form",""));
+
+    addNode(createNode("label","Nombre de película"),"form");
+
+    addNode(createNode("input",""),"form");
+
+    addNode(createNode("br",""),"form")
+
+    addNode(createNode("label","Imagen de película"),"form");
+
+    addNode(createNode("input",""),"form");
+
+    addNode(createNode("br",""),"form")
+
+    addNode(createNode("label","Descripcion"),"form");
+
+    addNode(createNode("textarea",""),"form");
+
+    addNode(createNode("br",""),"form")
+
+    addNode(createNode("button","Enviar"),"form")
+
+    addNode(createNode("div",""));
+
+var peliculas = [];
+
+// Forma orientada a prototipos (json)
+function creaPelicula(nombre, imagen, des){
+    var pelicula = {
+        nombre,
+        imagen,
+        descripcion:des
+    }
+    return pelicula;
+}
+
+//Forma constructor
+
+var Pelicula = function(nombre, imagen, des){
+    this.nombre = nombre;
+    this.imagen = imagen;
+    this.descripcion = des;
+}
+
+// Forma impura
+
+function subirInfo(nombre, imagen, des){
+    var nuevaPelicula = new Pelicula(nombre, imagen, des) // var nuevaPelicula = creaPelicula(nombre, imagen, des);
+    peliculas.push(nuevaPelicula);
+}
+
+// Forma pura
+
+function subirInfoPuro(peliculas, nombre, imagen, des){
+    var nuevaPelicula = new Pelicula(nombre, imagen, des); // var nuevaPelicula = creaPelicula(nombre, imagen, des);
+    var nuevasPeliculas = peliculas.map((pelicula)=>pelicula);
+    nuevasPeliculas.push(nuevaPelicula);
+    return nuevasPeliculas;
+}
+
+// NO SE PUEDE HACER PURA!!!
+function mostrarInfo(nombre, imagen, des){
+    // Proximamente 
+    var nuevaPelicula = new Pelicula(nombre, imagen, des);
+    var divPelicula = createNode("div","");
+    var imagenPelicula = createNode("img","");
+    imagenPelicula.src = nuevaPelicula.imagen;
+    divPelicula.appendChild(imagenPelicula);
+    var tituloPelicula = createNode("h1",nuevaPelicula.nombre);
+    divPelicula.appendChild(tituloPelicula);
+    addNode(divPelicula, "div", false);
+}
+
+var formularioPelicula = document.querySelector("form");
+
+formularioPelicula.addEventListener("submit",function(event){
+    event.preventDefault();
+    var nombre = document.querySelector("input");
+    var imagen = document.querySelectorAll("input")[1];
+    var descripcion = document.querySelector("textarea");
+    subirInfo(nombre.value, imagen.value, descripcion.value);
+    mostrarInfo(nombre.value, imagen.value, descripcion.value);
+    event.target.reset();
+
+})
+
+
+</script>
+</html>
