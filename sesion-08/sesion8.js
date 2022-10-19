@@ -12,7 +12,7 @@ var data = {
 var getData = function() {
     console.log("Call API...");
     loadingText.style.display = "block";
-    setTimeout(() => {
+    setTimeout(function() {
         loadingText.style.display = "none";
         pre.appendChild(document.createTextNode(JSON.stringify(data)))
     }, 2000);
