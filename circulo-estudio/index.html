@@ -2,11 +2,76 @@
 <html>
     <head>
         <title>Sesión 09 - Circulo de Estudio</title>
+        <style>
+            /* .test1 {
+                background-color: blue;
+                width: 100%;
+                height: 20px;
+            }
+            #test1 {
+                background-color: red;
+                width: 100%;
+                height: 20px;
+            }
+            section[name="test1"] {
+                background-color: green;
+                width: 100%;
+                height: 20px;
+            } */
+        </style>
     </head>
     <body>
         <h1>Sesión circulo de estudio</h1>
         <h2>Estoy eplicando un ejemplo</h2>
         <h3>De github con visual studio code</h3>
+        <section id="test1" class="test1" name="test1"></section>
+        <section class="test2"></section>
         <script type="text/javascript" src="./index.js"></script>
+        <script>
+            var section = document.querySelector("#test1");
+            var input = document.createElement("input");
+            var button = document.createElement("button");
+            var form = document.createElement("form");
+            var span = document.createElement("span");
+            section.appendChild(form);
+            form.appendChild(input);
+            form.appendChild(span);
+            form.appendChild(button);
+            input.id = "block-letter";
+            input.required = true;
+            span.style.display = "none";
+            button.innerText = "Enviar";
+            button.type = "submit";
+
+            var setError = function(text, display) {
+                span.innerText = text;
+                span.style.display = display;
+            }
+            
+            input.addEventListener("keypress", function(event) {
+                if (event.key === "a") {
+                    setError("No puedes ingresar la letra a", "block")
+                    event.preventDefault();
+                } else {
+                    setError("", "none")
+                }
+            });
+
+            input.addEventListener("input", function(event) {
+                if (!event.target.value.match(/^[A-Za-z]+$/)) {
+                    button.disabled = true;
+                    if (event.target.value.length === 0) {
+                        setError("El campo no puede estar vacío", "block")
+                    } else {
+                        setError("No puedes ingresar números", "block")
+                    }
+                    input.style.backgroundColor = "rgba(255,0,0,0.5)";
+                } else {
+                    button.disabled = false;
+                }
+                input.style.backgroundColor = "white";
+            });
+
+        </script>
     </body>
 </html>
